@@ -1,0 +1,26 @@
+[
+  {
+    "customer_id": "C0000009",
+    "action": "Confirm Abuse",
+    "note": "",
+    "timestamp": "2026-09-05T17:42:32.985870+00:00"
+  },
+  {
+    "customer_id": "C0000009",
+    "action": "Approve",
+    "note": "",
+    "timestamp": "2026-09-05T17:43:58.121894+00:00"
+  },
+  {
+    "customer_id": "C0000124",
+    "action": "Approve",
+    "note": "",
+    "timestamp": "2026-09-05T17:44:38.527045+00:00"
+  },
+  {
+    "customer_id": "C0000009",
+    "action": "APPROVE",
+    "note": "",
+    "timestamp": "2026-09-05T17:59:22.213023+00:00"
+  }
+]
