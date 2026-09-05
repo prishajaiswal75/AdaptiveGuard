@@ -1,0 +1,3335 @@
+{
+  "experiment": "Phase 5 review-policy comparison (noisy/delayed/unresolved labels, equal budget)",
+  "protocol": {
+    "phase_1_4_unchanged": true,
+    "frozen_controls_unchanged": true,
+    "final_test_touched": false,
+    "review_pool": "validation split only",
+    "validation_pool_size": 597,
+    "review_batch_size": 30,
+    "total_reviewed_labels_per_policy": 60,
+    "routing_policies_compared": [
+      "max_ab",
+      "disagreement",
+      "risk_x_disagreement"
+    ],
+    "each_policy_runs_independent_equal_budget": true,
+    "noise_rate": 0.1,
+    "unresolved_rate": 0.1,
+    "delayed_fraction": 0.5,
+    "delay_extra_rounds": 1,
+    "outcome_seed": 20260905,
+    "outcome_seed_note": "identical across all policies -- a customer selected by two different policies gets an identical simulated noise/unresolved/delay outcome; cross-policy differences come only from routing.",
+    "thresholds_locked": {
+      "A": 0.2921212121212121,
+      "A+B": 0.5643434343434344
+    },
+    "costs": {
+      "cost_fp": 5.0,
+      "cost_fn": 26.77696737044146
+    },
+    "label_source": "oracle true_abuse_label, passed through the noisy/unresolved/delay review simulation"
+  },
+  "review_quality_by_policy": {
+    "max_ab": {
+      "n_reviewed": 60,
+      "abuse_yield": 1.0,
+      "n_resolved": 57,
+      "n_unresolved": 3,
+      "unresolved_rate_observed": 0.05,
+      "n_noisy_labels": 1,
+      "noisy_rate_observed": 0.017543859649122806,
+      "observed_vs_oracle_label_agreement": 0.9824561403508771
+    },
+    "disagreement": {
+      "n_reviewed": 60,
+      "abuse_yield": 0.5333333333333333,
+      "n_resolved": 57,
+      "n_unresolved": 3,
+      "unresolved_rate_observed": 0.05,
+      "n_noisy_labels": 6,
+      "noisy_rate_observed": 0.10526315789473684,
+      "observed_vs_oracle_label_agreement": 0.8947368421052632
+    },
+    "risk_x_disagreement": {
+      "n_reviewed": 60,
+      "abuse_yield": 0.7,
+      "n_resolved": 55,
+      "n_unresolved": 5,
+      "unresolved_rate_observed": 0.08333333333333333,
+      "n_noisy_labels": 7,
+      "noisy_rate_observed": 0.12727272727272726,
+      "observed_vs_oracle_label_agreement": 0.8727272727272727
+    }
+  },
+  "rounds_by_policy": {
+    "max_ab": {
+      "round_1": {
+        "as_of_day": 119,
+        "n_trainable_reviewed_labels": 0,
+        "controls": {
+          "A_frozen": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1146,
+              "tp": 207,
+              "fp": 6,
+              "fn": 17,
+              "tn": 916,
+              "precision": 0.971830985915493,
+              "recall": 0.9241071428571429,
+              "f1": 0.9473684210526317,
+              "fpr": 0.006507592190889371,
+              "fp_cost": 30.0,
+              "fn_cost": 455.20844529750485,
+              "total_cost": 485.20844529750485
+            },
+            "by_population": {
+              "normal": {
+                "n": 809,
+                "tp": 0,
+                "fp": 6,
+                "fn": 0,
+                "tn": 803,
+                "fpr": 0.007416563658838072
+              },
+              "hard_negative": {
+                "n": 113,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 113,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 113,
+                "tp": 109,
+                "fp": 0,
+                "fn": 4,
+                "tn": 0,
+                "recall": 0.9646017699115044
+              },
+              "adaptive_abuse": {
+                "n": 111,
+                "tp": 98,
+                "fp": 0,
+                "fn": 13,
+                "tn": 0,
+                "recall": 0.8828828828828829
+              }
+            }
+          },
+          "A+B_frozen": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1146,
+              "tp": 221,
+              "fp": 0,
+              "fn": 3,
+              "tn": 922,
+              "precision": 1.0,
+              "recall": 0.9866071428571429,
+              "f1": 0.9932584269662922,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 80.33090211132438,
+              "total_cost": 80.33090211132438
+            },
+            "by_population": {
+              "normal": {
+                "n": 809,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 809,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 113,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 113,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 113,
+                "tp": 112,
+                "fp": 0,
+                "fn": 1,
+                "tn": 0,
+                "recall": 0.9911504424778761
+              },
+              "adaptive_abuse": {
+                "n": 111,
+                "tp": 109,
+                "fp": 0,
+                "fn": 2,
+                "tn": 0,
+                "recall": 0.9819819819819819
+              }
+            }
+          }
+        },
+        "retrained": {
+          "A_retrain": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1146,
+              "tp": 207,
+              "fp": 6,
+              "fn": 17,
+              "tn": 916,
+              "precision": 0.971830985915493,
+              "recall": 0.9241071428571429,
+              "f1": 0.9473684210526317,
+              "fpr": 0.006507592190889371,
+              "fp_cost": 30.0,
+              "fn_cost": 455.20844529750485,
+              "total_cost": 485.20844529750485
+            },
+            "by_population": {
+              "normal": {
+                "n": 809,
+                "tp": 0,
+                "fp": 6,
+                "fn": 0,
+                "tn": 803,
+                "fpr": 0.007416563658838072
+              },
+              "hard_negative": {
+                "n": 113,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 113,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 113,
+                "tp": 109,
+                "fp": 0,
+                "fn": 4,
+                "tn": 0,
+                "recall": 0.9646017699115044
+              },
+              "adaptive_abuse": {
+                "n": 111,
+                "tp": 98,
+                "fp": 0,
+                "fn": 13,
+                "tn": 0,
+                "recall": 0.8828828828828829
+              }
+            }
+          },
+          "A+B_retrain": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1146,
+              "tp": 221,
+              "fp": 1,
+              "fn": 3,
+              "tn": 921,
+              "precision": 0.9954954954954955,
+              "recall": 0.9866071428571429,
+              "f1": 0.9910313901345291,
+              "fpr": 0.0010845986984815619,
+              "fp_cost": 5.0,
+              "fn_cost": 80.33090211132438,
+              "total_cost": 85.33090211132438
+            },
+            "by_population": {
+              "normal": {
+                "n": 809,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 809,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 113,
+                "tp": 0,
+                "fp": 1,
+                "fn": 0,
+                "tn": 112,
+                "fpr": 0.008849557522123894
+              },
+              "naive_abuse": {
+                "n": 113,
+                "tp": 112,
+                "fp": 0,
+                "fn": 1,
+                "tn": 0,
+                "recall": 0.9911504424778761
+              },
+              "adaptive_abuse": {
+                "n": 111,
+                "tp": 109,
+                "fp": 0,
+                "fn": 2,
+                "tn": 0,
+                "recall": 0.9819819819819819
+              }
+            }
+          }
+        }
+      },
+      "round_2": {
+        "as_of_day": 149,
+        "n_trainable_reviewed_labels": 0,
+        "controls": {
+          "A_frozen": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1191,
+              "tp": 198,
+              "fp": 3,
+              "fn": 31,
+              "tn": 959,
+              "precision": 0.9850746268656716,
+              "recall": 0.8646288209606987,
+              "f1": 0.9209302325581395,
+              "fpr": 0.0031185031185031187,
+              "fp_cost": 15.0,
+              "fn_cost": 830.0859884836854,
+              "total_cost": 845.0859884836854
+            },
+            "by_population": {
+              "normal": {
+                "n": 846,
+                "tp": 0,
+                "fp": 3,
+                "fn": 0,
+                "tn": 843,
+                "fpr": 0.0035460992907801418
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 114,
+                "fp": 0,
+                "fn": 2,
+                "tn": 0,
+                "recall": 0.9827586206896551
+              },
+              "adaptive_abuse": {
+                "n": 113,
+                "tp": 84,
+                "fp": 0,
+                "fn": 29,
+                "tn": 0,
+                "recall": 0.7433628318584071
+              }
+            }
+          },
+          "A+B_frozen": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1191,
+              "tp": 226,
+              "fp": 0,
+              "fn": 3,
+              "tn": 962,
+              "precision": 1.0,
+              "recall": 0.9868995633187773,
+              "f1": 0.9934065934065934,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 80.33090211132438,
+              "total_cost": 80.33090211132438
+            },
+            "by_population": {
+              "normal": {
+                "n": 846,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 846,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 113,
+                "tp": 110,
+                "fp": 0,
+                "fn": 3,
+                "tn": 0,
+                "recall": 0.9734513274336283
+              }
+            }
+          }
+        },
+        "retrained": {
+          "A_retrain": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1191,
+              "tp": 198,
+              "fp": 3,
+              "fn": 31,
+              "tn": 959,
+              "precision": 0.9850746268656716,
+              "recall": 0.8646288209606987,
+              "f1": 0.9209302325581395,
+              "fpr": 0.0031185031185031187,
+              "fp_cost": 15.0,
+              "fn_cost": 830.0859884836854,
+              "total_cost": 845.0859884836854
+            },
+            "by_population": {
+              "normal": {
+                "n": 846,
+                "tp": 0,
+                "fp": 3,
+                "fn": 0,
+                "tn": 843,
+                "fpr": 0.0035460992907801418
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 114,
+                "fp": 0,
+                "fn": 2,
+                "tn": 0,
+                "recall": 0.9827586206896551
+              },
+              "adaptive_abuse": {
+                "n": 113,
+                "tp": 84,
+                "fp": 0,
+                "fn": 29,
+                "tn": 0,
+                "recall": 0.7433628318584071
+              }
+            }
+          },
+          "A+B_retrain": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1191,
+              "tp": 225,
+              "fp": 0,
+              "fn": 4,
+              "tn": 962,
+              "precision": 1.0,
+              "recall": 0.982532751091703,
+              "f1": 0.9911894273127753,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 107.10786948176585,
+              "total_cost": 107.10786948176585
+            },
+            "by_population": {
+              "normal": {
+                "n": 846,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 846,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 113,
+                "tp": 109,
+                "fp": 0,
+                "fn": 4,
+                "tn": 0,
+                "recall": 0.9646017699115044
+              }
+            }
+          }
+        }
+      },
+      "round_3": {
+        "as_of_day": 179,
+        "n_trainable_reviewed_labels": 12,
+        "controls": {
+          "A_frozen": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1197,
+              "tp": 180,
+              "fp": 2,
+              "fn": 50,
+              "tn": 965,
+              "precision": 0.989010989010989,
+              "recall": 0.782608695652174,
+              "f1": 0.8737864077669905,
+              "fpr": 0.002068252326783868,
+              "fp_cost": 10.0,
+              "fn_cost": 1338.848368522073,
+              "total_cost": 1348.848368522073
+            },
+            "by_population": {
+              "normal": {
+                "n": 851,
+                "tp": 0,
+                "fp": 2,
+                "fn": 0,
+                "tn": 849,
+                "fpr": 0.0023501762632197414
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 64,
+                "fp": 0,
+                "fn": 50,
+                "tn": 0,
+                "recall": 0.5614035087719298
+              }
+            }
+          },
+          "A+B_frozen": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1197,
+              "tp": 222,
+              "fp": 0,
+              "fn": 8,
+              "tn": 967,
+              "precision": 1.0,
+              "recall": 0.9652173913043478,
+              "f1": 0.9823008849557522,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 214.2157389635317,
+              "total_cost": 214.2157389635317
+            },
+            "by_population": {
+              "normal": {
+                "n": 851,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 851,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 106,
+                "fp": 0,
+                "fn": 8,
+                "tn": 0,
+                "recall": 0.9298245614035088
+              }
+            }
+          }
+        },
+        "retrained": {
+          "A_retrain": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1197,
+              "tp": 179,
+              "fp": 4,
+              "fn": 51,
+              "tn": 963,
+              "precision": 0.9781420765027322,
+              "recall": 0.7782608695652173,
+              "f1": 0.8668280871670702,
+              "fpr": 0.004136504653567736,
+              "fp_cost": 20.0,
+              "fn_cost": 1365.6253358925146,
+              "total_cost": 1385.6253358925146
+            },
+            "by_population": {
+              "normal": {
+                "n": 851,
+                "tp": 0,
+                "fp": 4,
+                "fn": 0,
+                "tn": 847,
+                "fpr": 0.004700352526439483
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 63,
+                "fp": 0,
+                "fn": 51,
+                "tn": 0,
+                "recall": 0.5526315789473685
+              }
+            }
+          },
+          "A+B_retrain": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1197,
+              "tp": 221,
+              "fp": 0,
+              "fn": 9,
+              "tn": 967,
+              "precision": 1.0,
+              "recall": 0.9608695652173913,
+              "f1": 0.9800443458980045,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 240.99270633397316,
+              "total_cost": 240.99270633397316
+            },
+            "by_population": {
+              "normal": {
+                "n": 851,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 851,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 105,
+                "fp": 0,
+                "fn": 9,
+                "tn": 0,
+                "recall": 0.9210526315789473
+              }
+            }
+          }
+        }
+      },
+      "round_4": {
+        "as_of_day": 209,
+        "n_trainable_reviewed_labels": 42,
+        "controls": {
+          "A_frozen": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1198,
+              "tp": 162,
+              "fp": 10,
+              "fn": 68,
+              "tn": 958,
+              "precision": 0.9418604651162791,
+              "recall": 0.7043478260869566,
+              "f1": 0.8059701492537314,
+              "fpr": 0.010330578512396695,
+              "fp_cost": 50.0,
+              "fn_cost": 1820.8337811900194,
+              "total_cost": 1870.8337811900194
+            },
+            "by_population": {
+              "normal": {
+                "n": 852,
+                "tp": 0,
+                "fp": 9,
+                "fn": 0,
+                "tn": 843,
+                "fpr": 0.01056338028169014
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 1,
+                "fn": 0,
+                "tn": 115,
+                "fpr": 0.008620689655172414
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 46,
+                "fp": 0,
+                "fn": 68,
+                "tn": 0,
+                "recall": 0.40350877192982454
+              }
+            }
+          },
+          "A+B_frozen": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1198,
+              "tp": 220,
+              "fp": 10,
+              "fn": 10,
+              "tn": 958,
+              "precision": 0.9565217391304348,
+              "recall": 0.9565217391304348,
+              "f1": 0.9565217391304348,
+              "fpr": 0.010330578512396695,
+              "fp_cost": 50.0,
+              "fn_cost": 267.76967370441463,
+              "total_cost": 317.76967370441463
+            },
+            "by_population": {
+              "normal": {
+                "n": 852,
+                "tp": 0,
+                "fp": 8,
+                "fn": 0,
+                "tn": 844,
+                "fpr": 0.009389671361502348
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 2,
+                "fn": 0,
+                "tn": 114,
+                "fpr": 0.017241379310344827
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 104,
+                "fp": 0,
+                "fn": 10,
+                "tn": 0,
+                "recall": 0.9122807017543859
+              }
+            }
+          }
+        },
+        "retrained": {
+          "A_retrain": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1198,
+              "tp": 162,
+              "fp": 10,
+              "fn": 68,
+              "tn": 958,
+              "precision": 0.9418604651162791,
+              "recall": 0.7043478260869566,
+              "f1": 0.8059701492537314,
+              "fpr": 0.010330578512396695,
+              "fp_cost": 50.0,
+              "fn_cost": 1820.8337811900194,
+              "total_cost": 1870.8337811900194
+            },
+            "by_population": {
+              "normal": {
+                "n": 852,
+                "tp": 0,
+                "fp": 9,
+                "fn": 0,
+                "tn": 843,
+                "fpr": 0.01056338028169014
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 1,
+                "fn": 0,
+                "tn": 115,
+                "fpr": 0.008620689655172414
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 46,
+                "fp": 0,
+                "fn": 68,
+                "tn": 0,
+                "recall": 0.40350877192982454
+              }
+            }
+          },
+          "A+B_retrain": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1198,
+              "tp": 219,
+              "fp": 6,
+              "fn": 11,
+              "tn": 962,
+              "precision": 0.9733333333333334,
+              "recall": 0.9521739130434783,
+              "f1": 0.9626373626373628,
+              "fpr": 0.006198347107438017,
+              "fp_cost": 30.0,
+              "fn_cost": 294.5466410748561,
+              "total_cost": 324.5466410748561
+            },
+            "by_population": {
+              "normal": {
+                "n": 852,
+                "tp": 0,
+                "fp": 4,
+                "fn": 0,
+                "tn": 848,
+                "fpr": 0.004694835680751174
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 2,
+                "fn": 0,
+                "tn": 114,
+                "fpr": 0.017241379310344827
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 103,
+                "fp": 0,
+                "fn": 11,
+                "tn": 0,
+                "recall": 0.9035087719298246
+              }
+            }
+          }
+        }
+      }
+    },
+    "disagreement": {
+      "round_1": {
+        "as_of_day": 119,
+        "n_trainable_reviewed_labels": 0,
+        "controls": {
+          "A_frozen": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1146,
+              "tp": 207,
+              "fp": 6,
+              "fn": 17,
+              "tn": 916,
+              "precision": 0.971830985915493,
+              "recall": 0.9241071428571429,
+              "f1": 0.9473684210526317,
+              "fpr": 0.006507592190889371,
+              "fp_cost": 30.0,
+              "fn_cost": 455.20844529750485,
+              "total_cost": 485.20844529750485
+            },
+            "by_population": {
+              "normal": {
+                "n": 809,
+                "tp": 0,
+                "fp": 6,
+                "fn": 0,
+                "tn": 803,
+                "fpr": 0.007416563658838072
+              },
+              "hard_negative": {
+                "n": 113,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 113,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 113,
+                "tp": 109,
+                "fp": 0,
+                "fn": 4,
+                "tn": 0,
+                "recall": 0.9646017699115044
+              },
+              "adaptive_abuse": {
+                "n": 111,
+                "tp": 98,
+                "fp": 0,
+                "fn": 13,
+                "tn": 0,
+                "recall": 0.8828828828828829
+              }
+            }
+          },
+          "A+B_frozen": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1146,
+              "tp": 221,
+              "fp": 0,
+              "fn": 3,
+              "tn": 922,
+              "precision": 1.0,
+              "recall": 0.9866071428571429,
+              "f1": 0.9932584269662922,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 80.33090211132438,
+              "total_cost": 80.33090211132438
+            },
+            "by_population": {
+              "normal": {
+                "n": 809,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 809,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 113,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 113,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 113,
+                "tp": 112,
+                "fp": 0,
+                "fn": 1,
+                "tn": 0,
+                "recall": 0.9911504424778761
+              },
+              "adaptive_abuse": {
+                "n": 111,
+                "tp": 109,
+                "fp": 0,
+                "fn": 2,
+                "tn": 0,
+                "recall": 0.9819819819819819
+              }
+            }
+          }
+        },
+        "retrained": {
+          "A_retrain": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1146,
+              "tp": 207,
+              "fp": 6,
+              "fn": 17,
+              "tn": 916,
+              "precision": 0.971830985915493,
+              "recall": 0.9241071428571429,
+              "f1": 0.9473684210526317,
+              "fpr": 0.006507592190889371,
+              "fp_cost": 30.0,
+              "fn_cost": 455.20844529750485,
+              "total_cost": 485.20844529750485
+            },
+            "by_population": {
+              "normal": {
+                "n": 809,
+                "tp": 0,
+                "fp": 6,
+                "fn": 0,
+                "tn": 803,
+                "fpr": 0.007416563658838072
+              },
+              "hard_negative": {
+                "n": 113,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 113,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 113,
+                "tp": 109,
+                "fp": 0,
+                "fn": 4,
+                "tn": 0,
+                "recall": 0.9646017699115044
+              },
+              "adaptive_abuse": {
+                "n": 111,
+                "tp": 98,
+                "fp": 0,
+                "fn": 13,
+                "tn": 0,
+                "recall": 0.8828828828828829
+              }
+            }
+          },
+          "A+B_retrain": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1146,
+              "tp": 221,
+              "fp": 1,
+              "fn": 3,
+              "tn": 921,
+              "precision": 0.9954954954954955,
+              "recall": 0.9866071428571429,
+              "f1": 0.9910313901345291,
+              "fpr": 0.0010845986984815619,
+              "fp_cost": 5.0,
+              "fn_cost": 80.33090211132438,
+              "total_cost": 85.33090211132438
+            },
+            "by_population": {
+              "normal": {
+                "n": 809,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 809,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 113,
+                "tp": 0,
+                "fp": 1,
+                "fn": 0,
+                "tn": 112,
+                "fpr": 0.008849557522123894
+              },
+              "naive_abuse": {
+                "n": 113,
+                "tp": 112,
+                "fp": 0,
+                "fn": 1,
+                "tn": 0,
+                "recall": 0.9911504424778761
+              },
+              "adaptive_abuse": {
+                "n": 111,
+                "tp": 109,
+                "fp": 0,
+                "fn": 2,
+                "tn": 0,
+                "recall": 0.9819819819819819
+              }
+            }
+          }
+        }
+      },
+      "round_2": {
+        "as_of_day": 149,
+        "n_trainable_reviewed_labels": 0,
+        "controls": {
+          "A_frozen": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1191,
+              "tp": 198,
+              "fp": 3,
+              "fn": 31,
+              "tn": 959,
+              "precision": 0.9850746268656716,
+              "recall": 0.8646288209606987,
+              "f1": 0.9209302325581395,
+              "fpr": 0.0031185031185031187,
+              "fp_cost": 15.0,
+              "fn_cost": 830.0859884836854,
+              "total_cost": 845.0859884836854
+            },
+            "by_population": {
+              "normal": {
+                "n": 846,
+                "tp": 0,
+                "fp": 3,
+                "fn": 0,
+                "tn": 843,
+                "fpr": 0.0035460992907801418
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 114,
+                "fp": 0,
+                "fn": 2,
+                "tn": 0,
+                "recall": 0.9827586206896551
+              },
+              "adaptive_abuse": {
+                "n": 113,
+                "tp": 84,
+                "fp": 0,
+                "fn": 29,
+                "tn": 0,
+                "recall": 0.7433628318584071
+              }
+            }
+          },
+          "A+B_frozen": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1191,
+              "tp": 226,
+              "fp": 0,
+              "fn": 3,
+              "tn": 962,
+              "precision": 1.0,
+              "recall": 0.9868995633187773,
+              "f1": 0.9934065934065934,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 80.33090211132438,
+              "total_cost": 80.33090211132438
+            },
+            "by_population": {
+              "normal": {
+                "n": 846,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 846,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 113,
+                "tp": 110,
+                "fp": 0,
+                "fn": 3,
+                "tn": 0,
+                "recall": 0.9734513274336283
+              }
+            }
+          }
+        },
+        "retrained": {
+          "A_retrain": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1191,
+              "tp": 198,
+              "fp": 3,
+              "fn": 31,
+              "tn": 959,
+              "precision": 0.9850746268656716,
+              "recall": 0.8646288209606987,
+              "f1": 0.9209302325581395,
+              "fpr": 0.0031185031185031187,
+              "fp_cost": 15.0,
+              "fn_cost": 830.0859884836854,
+              "total_cost": 845.0859884836854
+            },
+            "by_population": {
+              "normal": {
+                "n": 846,
+                "tp": 0,
+                "fp": 3,
+                "fn": 0,
+                "tn": 843,
+                "fpr": 0.0035460992907801418
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 114,
+                "fp": 0,
+                "fn": 2,
+                "tn": 0,
+                "recall": 0.9827586206896551
+              },
+              "adaptive_abuse": {
+                "n": 113,
+                "tp": 84,
+                "fp": 0,
+                "fn": 29,
+                "tn": 0,
+                "recall": 0.7433628318584071
+              }
+            }
+          },
+          "A+B_retrain": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1191,
+              "tp": 225,
+              "fp": 0,
+              "fn": 4,
+              "tn": 962,
+              "precision": 1.0,
+              "recall": 0.982532751091703,
+              "f1": 0.9911894273127753,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 107.10786948176585,
+              "total_cost": 107.10786948176585
+            },
+            "by_population": {
+              "normal": {
+                "n": 846,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 846,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 113,
+                "tp": 109,
+                "fp": 0,
+                "fn": 4,
+                "tn": 0,
+                "recall": 0.9646017699115044
+              }
+            }
+          }
+        }
+      },
+      "round_3": {
+        "as_of_day": 179,
+        "n_trainable_reviewed_labels": 12,
+        "controls": {
+          "A_frozen": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1197,
+              "tp": 180,
+              "fp": 2,
+              "fn": 50,
+              "tn": 965,
+              "precision": 0.989010989010989,
+              "recall": 0.782608695652174,
+              "f1": 0.8737864077669905,
+              "fpr": 0.002068252326783868,
+              "fp_cost": 10.0,
+              "fn_cost": 1338.848368522073,
+              "total_cost": 1348.848368522073
+            },
+            "by_population": {
+              "normal": {
+                "n": 851,
+                "tp": 0,
+                "fp": 2,
+                "fn": 0,
+                "tn": 849,
+                "fpr": 0.0023501762632197414
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 64,
+                "fp": 0,
+                "fn": 50,
+                "tn": 0,
+                "recall": 0.5614035087719298
+              }
+            }
+          },
+          "A+B_frozen": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1197,
+              "tp": 222,
+              "fp": 0,
+              "fn": 8,
+              "tn": 967,
+              "precision": 1.0,
+              "recall": 0.9652173913043478,
+              "f1": 0.9823008849557522,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 214.2157389635317,
+              "total_cost": 214.2157389635317
+            },
+            "by_population": {
+              "normal": {
+                "n": 851,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 851,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 106,
+                "fp": 0,
+                "fn": 8,
+                "tn": 0,
+                "recall": 0.9298245614035088
+              }
+            }
+          }
+        },
+        "retrained": {
+          "A_retrain": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1197,
+              "tp": 196,
+              "fp": 1,
+              "fn": 34,
+              "tn": 966,
+              "precision": 0.9949238578680203,
+              "recall": 0.8521739130434782,
+              "f1": 0.9180327868852459,
+              "fpr": 0.001034126163391934,
+              "fp_cost": 5.0,
+              "fn_cost": 910.4168905950097,
+              "total_cost": 915.4168905950097
+            },
+            "by_population": {
+              "normal": {
+                "n": 851,
+                "tp": 0,
+                "fp": 1,
+                "fn": 0,
+                "tn": 850,
+                "fpr": 0.0011750881316098707
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 80,
+                "fp": 0,
+                "fn": 34,
+                "tn": 0,
+                "recall": 0.7017543859649122
+              }
+            }
+          },
+          "A+B_retrain": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1197,
+              "tp": 218,
+              "fp": 0,
+              "fn": 12,
+              "tn": 967,
+              "precision": 1.0,
+              "recall": 0.9478260869565217,
+              "f1": 0.9732142857142857,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 321.3236084452975,
+              "total_cost": 321.3236084452975
+            },
+            "by_population": {
+              "normal": {
+                "n": 851,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 851,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 102,
+                "fp": 0,
+                "fn": 12,
+                "tn": 0,
+                "recall": 0.8947368421052632
+              }
+            }
+          }
+        }
+      },
+      "round_4": {
+        "as_of_day": 209,
+        "n_trainable_reviewed_labels": 44,
+        "controls": {
+          "A_frozen": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1198,
+              "tp": 162,
+              "fp": 10,
+              "fn": 68,
+              "tn": 958,
+              "precision": 0.9418604651162791,
+              "recall": 0.7043478260869566,
+              "f1": 0.8059701492537314,
+              "fpr": 0.010330578512396695,
+              "fp_cost": 50.0,
+              "fn_cost": 1820.8337811900194,
+              "total_cost": 1870.8337811900194
+            },
+            "by_population": {
+              "normal": {
+                "n": 852,
+                "tp": 0,
+                "fp": 9,
+                "fn": 0,
+                "tn": 843,
+                "fpr": 0.01056338028169014
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 1,
+                "fn": 0,
+                "tn": 115,
+                "fpr": 0.008620689655172414
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 46,
+                "fp": 0,
+                "fn": 68,
+                "tn": 0,
+                "recall": 0.40350877192982454
+              }
+            }
+          },
+          "A+B_frozen": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1198,
+              "tp": 220,
+              "fp": 10,
+              "fn": 10,
+              "tn": 958,
+              "precision": 0.9565217391304348,
+              "recall": 0.9565217391304348,
+              "f1": 0.9565217391304348,
+              "fpr": 0.010330578512396695,
+              "fp_cost": 50.0,
+              "fn_cost": 267.76967370441463,
+              "total_cost": 317.76967370441463
+            },
+            "by_population": {
+              "normal": {
+                "n": 852,
+                "tp": 0,
+                "fp": 8,
+                "fn": 0,
+                "tn": 844,
+                "fpr": 0.009389671361502348
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 2,
+                "fn": 0,
+                "tn": 114,
+                "fpr": 0.017241379310344827
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 104,
+                "fp": 0,
+                "fn": 10,
+                "tn": 0,
+                "recall": 0.9122807017543859
+              }
+            }
+          }
+        },
+        "retrained": {
+          "A_retrain": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1198,
+              "tp": 200,
+              "fp": 15,
+              "fn": 30,
+              "tn": 953,
+              "precision": 0.9302325581395349,
+              "recall": 0.8695652173913043,
+              "f1": 0.898876404494382,
+              "fpr": 0.015495867768595042,
+              "fp_cost": 75.0,
+              "fn_cost": 803.3090211132438,
+              "total_cost": 878.3090211132438
+            },
+            "by_population": {
+              "normal": {
+                "n": 852,
+                "tp": 0,
+                "fp": 14,
+                "fn": 0,
+                "tn": 838,
+                "fpr": 0.01643192488262911
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 1,
+                "fn": 0,
+                "tn": 115,
+                "fpr": 0.008620689655172414
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 84,
+                "fp": 0,
+                "fn": 30,
+                "tn": 0,
+                "recall": 0.7368421052631579
+              }
+            }
+          },
+          "A+B_retrain": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1198,
+              "tp": 203,
+              "fp": 10,
+              "fn": 27,
+              "tn": 958,
+              "precision": 0.9530516431924883,
+              "recall": 0.8826086956521739,
+              "f1": 0.9164785553047404,
+              "fpr": 0.010330578512396695,
+              "fp_cost": 50.0,
+              "fn_cost": 722.9781190019195,
+              "total_cost": 772.9781190019195
+            },
+            "by_population": {
+              "normal": {
+                "n": 852,
+                "tp": 0,
+                "fp": 9,
+                "fn": 0,
+                "tn": 843,
+                "fpr": 0.01056338028169014
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 1,
+                "fn": 0,
+                "tn": 115,
+                "fpr": 0.008620689655172414
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 87,
+                "fp": 0,
+                "fn": 27,
+                "tn": 0,
+                "recall": 0.7631578947368421
+              }
+            }
+          }
+        }
+      }
+    },
+    "risk_x_disagreement": {
+      "round_1": {
+        "as_of_day": 119,
+        "n_trainable_reviewed_labels": 0,
+        "controls": {
+          "A_frozen": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1146,
+              "tp": 207,
+              "fp": 6,
+              "fn": 17,
+              "tn": 916,
+              "precision": 0.971830985915493,
+              "recall": 0.9241071428571429,
+              "f1": 0.9473684210526317,
+              "fpr": 0.006507592190889371,
+              "fp_cost": 30.0,
+              "fn_cost": 455.20844529750485,
+              "total_cost": 485.20844529750485
+            },
+            "by_population": {
+              "normal": {
+                "n": 809,
+                "tp": 0,
+                "fp": 6,
+                "fn": 0,
+                "tn": 803,
+                "fpr": 0.007416563658838072
+              },
+              "hard_negative": {
+                "n": 113,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 113,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 113,
+                "tp": 109,
+                "fp": 0,
+                "fn": 4,
+                "tn": 0,
+                "recall": 0.9646017699115044
+              },
+              "adaptive_abuse": {
+                "n": 111,
+                "tp": 98,
+                "fp": 0,
+                "fn": 13,
+                "tn": 0,
+                "recall": 0.8828828828828829
+              }
+            }
+          },
+          "A+B_frozen": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1146,
+              "tp": 221,
+              "fp": 0,
+              "fn": 3,
+              "tn": 922,
+              "precision": 1.0,
+              "recall": 0.9866071428571429,
+              "f1": 0.9932584269662922,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 80.33090211132438,
+              "total_cost": 80.33090211132438
+            },
+            "by_population": {
+              "normal": {
+                "n": 809,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 809,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 113,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 113,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 113,
+                "tp": 112,
+                "fp": 0,
+                "fn": 1,
+                "tn": 0,
+                "recall": 0.9911504424778761
+              },
+              "adaptive_abuse": {
+                "n": 111,
+                "tp": 109,
+                "fp": 0,
+                "fn": 2,
+                "tn": 0,
+                "recall": 0.9819819819819819
+              }
+            }
+          }
+        },
+        "retrained": {
+          "A_retrain": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1146,
+              "tp": 207,
+              "fp": 6,
+              "fn": 17,
+              "tn": 916,
+              "precision": 0.971830985915493,
+              "recall": 0.9241071428571429,
+              "f1": 0.9473684210526317,
+              "fpr": 0.006507592190889371,
+              "fp_cost": 30.0,
+              "fn_cost": 455.20844529750485,
+              "total_cost": 485.20844529750485
+            },
+            "by_population": {
+              "normal": {
+                "n": 809,
+                "tp": 0,
+                "fp": 6,
+                "fn": 0,
+                "tn": 803,
+                "fpr": 0.007416563658838072
+              },
+              "hard_negative": {
+                "n": 113,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 113,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 113,
+                "tp": 109,
+                "fp": 0,
+                "fn": 4,
+                "tn": 0,
+                "recall": 0.9646017699115044
+              },
+              "adaptive_abuse": {
+                "n": 111,
+                "tp": 98,
+                "fp": 0,
+                "fn": 13,
+                "tn": 0,
+                "recall": 0.8828828828828829
+              }
+            }
+          },
+          "A+B_retrain": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1146,
+              "tp": 221,
+              "fp": 1,
+              "fn": 3,
+              "tn": 921,
+              "precision": 0.9954954954954955,
+              "recall": 0.9866071428571429,
+              "f1": 0.9910313901345291,
+              "fpr": 0.0010845986984815619,
+              "fp_cost": 5.0,
+              "fn_cost": 80.33090211132438,
+              "total_cost": 85.33090211132438
+            },
+            "by_population": {
+              "normal": {
+                "n": 809,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 809,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 113,
+                "tp": 0,
+                "fp": 1,
+                "fn": 0,
+                "tn": 112,
+                "fpr": 0.008849557522123894
+              },
+              "naive_abuse": {
+                "n": 113,
+                "tp": 112,
+                "fp": 0,
+                "fn": 1,
+                "tn": 0,
+                "recall": 0.9911504424778761
+              },
+              "adaptive_abuse": {
+                "n": 111,
+                "tp": 109,
+                "fp": 0,
+                "fn": 2,
+                "tn": 0,
+                "recall": 0.9819819819819819
+              }
+            }
+          }
+        }
+      },
+      "round_2": {
+        "as_of_day": 149,
+        "n_trainable_reviewed_labels": 0,
+        "controls": {
+          "A_frozen": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1191,
+              "tp": 198,
+              "fp": 3,
+              "fn": 31,
+              "tn": 959,
+              "precision": 0.9850746268656716,
+              "recall": 0.8646288209606987,
+              "f1": 0.9209302325581395,
+              "fpr": 0.0031185031185031187,
+              "fp_cost": 15.0,
+              "fn_cost": 830.0859884836854,
+              "total_cost": 845.0859884836854
+            },
+            "by_population": {
+              "normal": {
+                "n": 846,
+                "tp": 0,
+                "fp": 3,
+                "fn": 0,
+                "tn": 843,
+                "fpr": 0.0035460992907801418
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 114,
+                "fp": 0,
+                "fn": 2,
+                "tn": 0,
+                "recall": 0.9827586206896551
+              },
+              "adaptive_abuse": {
+                "n": 113,
+                "tp": 84,
+                "fp": 0,
+                "fn": 29,
+                "tn": 0,
+                "recall": 0.7433628318584071
+              }
+            }
+          },
+          "A+B_frozen": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1191,
+              "tp": 226,
+              "fp": 0,
+              "fn": 3,
+              "tn": 962,
+              "precision": 1.0,
+              "recall": 0.9868995633187773,
+              "f1": 0.9934065934065934,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 80.33090211132438,
+              "total_cost": 80.33090211132438
+            },
+            "by_population": {
+              "normal": {
+                "n": 846,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 846,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 113,
+                "tp": 110,
+                "fp": 0,
+                "fn": 3,
+                "tn": 0,
+                "recall": 0.9734513274336283
+              }
+            }
+          }
+        },
+        "retrained": {
+          "A_retrain": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1191,
+              "tp": 198,
+              "fp": 3,
+              "fn": 31,
+              "tn": 959,
+              "precision": 0.9850746268656716,
+              "recall": 0.8646288209606987,
+              "f1": 0.9209302325581395,
+              "fpr": 0.0031185031185031187,
+              "fp_cost": 15.0,
+              "fn_cost": 830.0859884836854,
+              "total_cost": 845.0859884836854
+            },
+            "by_population": {
+              "normal": {
+                "n": 846,
+                "tp": 0,
+                "fp": 3,
+                "fn": 0,
+                "tn": 843,
+                "fpr": 0.0035460992907801418
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 114,
+                "fp": 0,
+                "fn": 2,
+                "tn": 0,
+                "recall": 0.9827586206896551
+              },
+              "adaptive_abuse": {
+                "n": 113,
+                "tp": 84,
+                "fp": 0,
+                "fn": 29,
+                "tn": 0,
+                "recall": 0.7433628318584071
+              }
+            }
+          },
+          "A+B_retrain": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1191,
+              "tp": 225,
+              "fp": 0,
+              "fn": 4,
+              "tn": 962,
+              "precision": 1.0,
+              "recall": 0.982532751091703,
+              "f1": 0.9911894273127753,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 107.10786948176585,
+              "total_cost": 107.10786948176585
+            },
+            "by_population": {
+              "normal": {
+                "n": 846,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 846,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 113,
+                "tp": 109,
+                "fp": 0,
+                "fn": 4,
+                "tn": 0,
+                "recall": 0.9646017699115044
+              }
+            }
+          }
+        }
+      },
+      "round_3": {
+        "as_of_day": 179,
+        "n_trainable_reviewed_labels": 10,
+        "controls": {
+          "A_frozen": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1197,
+              "tp": 180,
+              "fp": 2,
+              "fn": 50,
+              "tn": 965,
+              "precision": 0.989010989010989,
+              "recall": 0.782608695652174,
+              "f1": 0.8737864077669905,
+              "fpr": 0.002068252326783868,
+              "fp_cost": 10.0,
+              "fn_cost": 1338.848368522073,
+              "total_cost": 1348.848368522073
+            },
+            "by_population": {
+              "normal": {
+                "n": 851,
+                "tp": 0,
+                "fp": 2,
+                "fn": 0,
+                "tn": 849,
+                "fpr": 0.0023501762632197414
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 64,
+                "fp": 0,
+                "fn": 50,
+                "tn": 0,
+                "recall": 0.5614035087719298
+              }
+            }
+          },
+          "A+B_frozen": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1197,
+              "tp": 222,
+              "fp": 0,
+              "fn": 8,
+              "tn": 967,
+              "precision": 1.0,
+              "recall": 0.9652173913043478,
+              "f1": 0.9823008849557522,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 214.2157389635317,
+              "total_cost": 214.2157389635317
+            },
+            "by_population": {
+              "normal": {
+                "n": 851,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 851,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 106,
+                "fp": 0,
+                "fn": 8,
+                "tn": 0,
+                "recall": 0.9298245614035088
+              }
+            }
+          }
+        },
+        "retrained": {
+          "A_retrain": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1197,
+              "tp": 195,
+              "fp": 1,
+              "fn": 35,
+              "tn": 966,
+              "precision": 0.9948979591836735,
+              "recall": 0.8478260869565217,
+              "f1": 0.9154929577464789,
+              "fpr": 0.001034126163391934,
+              "fp_cost": 5.0,
+              "fn_cost": 937.1938579654511,
+              "total_cost": 942.1938579654511
+            },
+            "by_population": {
+              "normal": {
+                "n": 851,
+                "tp": 0,
+                "fp": 1,
+                "fn": 0,
+                "tn": 850,
+                "fpr": 0.0011750881316098707
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 79,
+                "fp": 0,
+                "fn": 35,
+                "tn": 0,
+                "recall": 0.6929824561403509
+              }
+            }
+          },
+          "A+B_retrain": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1197,
+              "tp": 220,
+              "fp": 0,
+              "fn": 10,
+              "tn": 967,
+              "precision": 1.0,
+              "recall": 0.9565217391304348,
+              "f1": 0.9777777777777777,
+              "fpr": 0.0,
+              "fp_cost": 0.0,
+              "fn_cost": 267.76967370441463,
+              "total_cost": 267.76967370441463
+            },
+            "by_population": {
+              "normal": {
+                "n": 851,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 851,
+                "fpr": 0.0
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 116,
+                "fpr": 0.0
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 104,
+                "fp": 0,
+                "fn": 10,
+                "tn": 0,
+                "recall": 0.9122807017543859
+              }
+            }
+          }
+        }
+      },
+      "round_4": {
+        "as_of_day": 209,
+        "n_trainable_reviewed_labels": 38,
+        "controls": {
+          "A_frozen": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1198,
+              "tp": 162,
+              "fp": 10,
+              "fn": 68,
+              "tn": 958,
+              "precision": 0.9418604651162791,
+              "recall": 0.7043478260869566,
+              "f1": 0.8059701492537314,
+              "fpr": 0.010330578512396695,
+              "fp_cost": 50.0,
+              "fn_cost": 1820.8337811900194,
+              "total_cost": 1870.8337811900194
+            },
+            "by_population": {
+              "normal": {
+                "n": 852,
+                "tp": 0,
+                "fp": 9,
+                "fn": 0,
+                "tn": 843,
+                "fpr": 0.01056338028169014
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 1,
+                "fn": 0,
+                "tn": 115,
+                "fpr": 0.008620689655172414
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 46,
+                "fp": 0,
+                "fn": 68,
+                "tn": 0,
+                "recall": 0.40350877192982454
+              }
+            }
+          },
+          "A+B_frozen": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1198,
+              "tp": 220,
+              "fp": 10,
+              "fn": 10,
+              "tn": 958,
+              "precision": 0.9565217391304348,
+              "recall": 0.9565217391304348,
+              "f1": 0.9565217391304348,
+              "fpr": 0.010330578512396695,
+              "fp_cost": 50.0,
+              "fn_cost": 267.76967370441463,
+              "total_cost": 317.76967370441463
+            },
+            "by_population": {
+              "normal": {
+                "n": 852,
+                "tp": 0,
+                "fp": 8,
+                "fn": 0,
+                "tn": 844,
+                "fpr": 0.009389671361502348
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 2,
+                "fn": 0,
+                "tn": 114,
+                "fpr": 0.017241379310344827
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 104,
+                "fp": 0,
+                "fn": 10,
+                "tn": 0,
+                "recall": 0.9122807017543859
+              }
+            }
+          }
+        },
+        "retrained": {
+          "A_retrain": {
+            "overall": {
+              "threshold": 0.2921212121212121,
+              "n": 1198,
+              "tp": 194,
+              "fp": 11,
+              "fn": 36,
+              "tn": 957,
+              "precision": 0.9463414634146341,
+              "recall": 0.8434782608695652,
+              "f1": 0.8919540229885057,
+              "fpr": 0.011363636363636364,
+              "fp_cost": 55.0,
+              "fn_cost": 963.9708253358926,
+              "total_cost": 1018.9708253358926
+            },
+            "by_population": {
+              "normal": {
+                "n": 852,
+                "tp": 0,
+                "fp": 10,
+                "fn": 0,
+                "tn": 842,
+                "fpr": 0.011737089201877934
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 1,
+                "fn": 0,
+                "tn": 115,
+                "fpr": 0.008620689655172414
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 78,
+                "fp": 0,
+                "fn": 36,
+                "tn": 0,
+                "recall": 0.6842105263157895
+              }
+            }
+          },
+          "A+B_retrain": {
+            "overall": {
+              "threshold": 0.5643434343434344,
+              "n": 1198,
+              "tp": 198,
+              "fp": 9,
+              "fn": 32,
+              "tn": 959,
+              "precision": 0.9565217391304348,
+              "recall": 0.8608695652173913,
+              "f1": 0.9061784897025171,
+              "fpr": 0.009297520661157025,
+              "fp_cost": 45.0,
+              "fn_cost": 856.8629558541268,
+              "total_cost": 901.8629558541268
+            },
+            "by_population": {
+              "normal": {
+                "n": 852,
+                "tp": 0,
+                "fp": 8,
+                "fn": 0,
+                "tn": 844,
+                "fpr": 0.009389671361502348
+              },
+              "hard_negative": {
+                "n": 116,
+                "tp": 0,
+                "fp": 1,
+                "fn": 0,
+                "tn": 115,
+                "fpr": 0.008620689655172414
+              },
+              "naive_abuse": {
+                "n": 116,
+                "tp": 116,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0,
+                "recall": 1.0
+              },
+              "adaptive_abuse": {
+                "n": 114,
+                "tp": 82,
+                "fp": 0,
+                "fn": 32,
+                "tn": 0,
+                "recall": 0.7192982456140351
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "hero_comparison": {
+    "round_1": {
+      "max_ab": {
+        "A_frozen": {
+          "precision": 0.971830985915493,
+          "recall": 0.9241071428571429,
+          "f1": 0.9473684210526317,
+          "fpr": 0.006507592190889371,
+          "fp": 6,
+          "fn": 17,
+          "fp_cost": 30.0,
+          "fn_cost": 455.20844529750485,
+          "total_cost": 485.20844529750485
+        },
+        "A_retrain": {
+          "precision": 0.971830985915493,
+          "recall": 0.9241071428571429,
+          "f1": 0.9473684210526317,
+          "fpr": 0.006507592190889371,
+          "fp": 6,
+          "fn": 17,
+          "fp_cost": 30.0,
+          "fn_cost": 455.20844529750485,
+          "total_cost": 485.20844529750485
+        },
+        "A+B_frozen": {
+          "precision": 1.0,
+          "recall": 0.9866071428571429,
+          "f1": 0.9932584269662922,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 3,
+          "fp_cost": 0.0,
+          "fn_cost": 80.33090211132438,
+          "total_cost": 80.33090211132438
+        },
+        "A+B_retrain": {
+          "precision": 0.9954954954954955,
+          "recall": 0.9866071428571429,
+          "f1": 0.9910313901345291,
+          "fpr": 0.0010845986984815619,
+          "fp": 1,
+          "fn": 3,
+          "fp_cost": 5.0,
+          "fn_cost": 80.33090211132438,
+          "total_cost": 85.33090211132438
+        },
+        "n_trainable_reviewed_labels": 0,
+        "adaptive_abuse_recall": {
+          "A_frozen": 0.8828828828828829,
+          "A_retrain": 0.8828828828828829,
+          "A+B_frozen": 0.9819819819819819,
+          "A+B_retrain": 0.9819819819819819
+        },
+        "hard_negative_fpr": {
+          "A_frozen": 0.0,
+          "A_retrain": 0.0,
+          "A+B_frozen": 0.0,
+          "A+B_retrain": 0.008849557522123894
+        }
+      },
+      "disagreement": {
+        "A_frozen": {
+          "precision": 0.971830985915493,
+          "recall": 0.9241071428571429,
+          "f1": 0.9473684210526317,
+          "fpr": 0.006507592190889371,
+          "fp": 6,
+          "fn": 17,
+          "fp_cost": 30.0,
+          "fn_cost": 455.20844529750485,
+          "total_cost": 485.20844529750485
+        },
+        "A_retrain": {
+          "precision": 0.971830985915493,
+          "recall": 0.9241071428571429,
+          "f1": 0.9473684210526317,
+          "fpr": 0.006507592190889371,
+          "fp": 6,
+          "fn": 17,
+          "fp_cost": 30.0,
+          "fn_cost": 455.20844529750485,
+          "total_cost": 485.20844529750485
+        },
+        "A+B_frozen": {
+          "precision": 1.0,
+          "recall": 0.9866071428571429,
+          "f1": 0.9932584269662922,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 3,
+          "fp_cost": 0.0,
+          "fn_cost": 80.33090211132438,
+          "total_cost": 80.33090211132438
+        },
+        "A+B_retrain": {
+          "precision": 0.9954954954954955,
+          "recall": 0.9866071428571429,
+          "f1": 0.9910313901345291,
+          "fpr": 0.0010845986984815619,
+          "fp": 1,
+          "fn": 3,
+          "fp_cost": 5.0,
+          "fn_cost": 80.33090211132438,
+          "total_cost": 85.33090211132438
+        },
+        "n_trainable_reviewed_labels": 0,
+        "adaptive_abuse_recall": {
+          "A_frozen": 0.8828828828828829,
+          "A_retrain": 0.8828828828828829,
+          "A+B_frozen": 0.9819819819819819,
+          "A+B_retrain": 0.9819819819819819
+        },
+        "hard_negative_fpr": {
+          "A_frozen": 0.0,
+          "A_retrain": 0.0,
+          "A+B_frozen": 0.0,
+          "A+B_retrain": 0.008849557522123894
+        }
+      },
+      "risk_x_disagreement": {
+        "A_frozen": {
+          "precision": 0.971830985915493,
+          "recall": 0.9241071428571429,
+          "f1": 0.9473684210526317,
+          "fpr": 0.006507592190889371,
+          "fp": 6,
+          "fn": 17,
+          "fp_cost": 30.0,
+          "fn_cost": 455.20844529750485,
+          "total_cost": 485.20844529750485
+        },
+        "A_retrain": {
+          "precision": 0.971830985915493,
+          "recall": 0.9241071428571429,
+          "f1": 0.9473684210526317,
+          "fpr": 0.006507592190889371,
+          "fp": 6,
+          "fn": 17,
+          "fp_cost": 30.0,
+          "fn_cost": 455.20844529750485,
+          "total_cost": 485.20844529750485
+        },
+        "A+B_frozen": {
+          "precision": 1.0,
+          "recall": 0.9866071428571429,
+          "f1": 0.9932584269662922,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 3,
+          "fp_cost": 0.0,
+          "fn_cost": 80.33090211132438,
+          "total_cost": 80.33090211132438
+        },
+        "A+B_retrain": {
+          "precision": 0.9954954954954955,
+          "recall": 0.9866071428571429,
+          "f1": 0.9910313901345291,
+          "fpr": 0.0010845986984815619,
+          "fp": 1,
+          "fn": 3,
+          "fp_cost": 5.0,
+          "fn_cost": 80.33090211132438,
+          "total_cost": 85.33090211132438
+        },
+        "n_trainable_reviewed_labels": 0,
+        "adaptive_abuse_recall": {
+          "A_frozen": 0.8828828828828829,
+          "A_retrain": 0.8828828828828829,
+          "A+B_frozen": 0.9819819819819819,
+          "A+B_retrain": 0.9819819819819819
+        },
+        "hard_negative_fpr": {
+          "A_frozen": 0.0,
+          "A_retrain": 0.0,
+          "A+B_frozen": 0.0,
+          "A+B_retrain": 0.008849557522123894
+        }
+      }
+    },
+    "round_2": {
+      "max_ab": {
+        "A_frozen": {
+          "precision": 0.9850746268656716,
+          "recall": 0.8646288209606987,
+          "f1": 0.9209302325581395,
+          "fpr": 0.0031185031185031187,
+          "fp": 3,
+          "fn": 31,
+          "fp_cost": 15.0,
+          "fn_cost": 830.0859884836854,
+          "total_cost": 845.0859884836854
+        },
+        "A_retrain": {
+          "precision": 0.9850746268656716,
+          "recall": 0.8646288209606987,
+          "f1": 0.9209302325581395,
+          "fpr": 0.0031185031185031187,
+          "fp": 3,
+          "fn": 31,
+          "fp_cost": 15.0,
+          "fn_cost": 830.0859884836854,
+          "total_cost": 845.0859884836854
+        },
+        "A+B_frozen": {
+          "precision": 1.0,
+          "recall": 0.9868995633187773,
+          "f1": 0.9934065934065934,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 3,
+          "fp_cost": 0.0,
+          "fn_cost": 80.33090211132438,
+          "total_cost": 80.33090211132438
+        },
+        "A+B_retrain": {
+          "precision": 1.0,
+          "recall": 0.982532751091703,
+          "f1": 0.9911894273127753,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 4,
+          "fp_cost": 0.0,
+          "fn_cost": 107.10786948176585,
+          "total_cost": 107.10786948176585
+        },
+        "n_trainable_reviewed_labels": 0,
+        "adaptive_abuse_recall": {
+          "A_frozen": 0.7433628318584071,
+          "A_retrain": 0.7433628318584071,
+          "A+B_frozen": 0.9734513274336283,
+          "A+B_retrain": 0.9646017699115044
+        },
+        "hard_negative_fpr": {
+          "A_frozen": 0.0,
+          "A_retrain": 0.0,
+          "A+B_frozen": 0.0,
+          "A+B_retrain": 0.0
+        }
+      },
+      "disagreement": {
+        "A_frozen": {
+          "precision": 0.9850746268656716,
+          "recall": 0.8646288209606987,
+          "f1": 0.9209302325581395,
+          "fpr": 0.0031185031185031187,
+          "fp": 3,
+          "fn": 31,
+          "fp_cost": 15.0,
+          "fn_cost": 830.0859884836854,
+          "total_cost": 845.0859884836854
+        },
+        "A_retrain": {
+          "precision": 0.9850746268656716,
+          "recall": 0.8646288209606987,
+          "f1": 0.9209302325581395,
+          "fpr": 0.0031185031185031187,
+          "fp": 3,
+          "fn": 31,
+          "fp_cost": 15.0,
+          "fn_cost": 830.0859884836854,
+          "total_cost": 845.0859884836854
+        },
+        "A+B_frozen": {
+          "precision": 1.0,
+          "recall": 0.9868995633187773,
+          "f1": 0.9934065934065934,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 3,
+          "fp_cost": 0.0,
+          "fn_cost": 80.33090211132438,
+          "total_cost": 80.33090211132438
+        },
+        "A+B_retrain": {
+          "precision": 1.0,
+          "recall": 0.982532751091703,
+          "f1": 0.9911894273127753,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 4,
+          "fp_cost": 0.0,
+          "fn_cost": 107.10786948176585,
+          "total_cost": 107.10786948176585
+        },
+        "n_trainable_reviewed_labels": 0,
+        "adaptive_abuse_recall": {
+          "A_frozen": 0.7433628318584071,
+          "A_retrain": 0.7433628318584071,
+          "A+B_frozen": 0.9734513274336283,
+          "A+B_retrain": 0.9646017699115044
+        },
+        "hard_negative_fpr": {
+          "A_frozen": 0.0,
+          "A_retrain": 0.0,
+          "A+B_frozen": 0.0,
+          "A+B_retrain": 0.0
+        }
+      },
+      "risk_x_disagreement": {
+        "A_frozen": {
+          "precision": 0.9850746268656716,
+          "recall": 0.8646288209606987,
+          "f1": 0.9209302325581395,
+          "fpr": 0.0031185031185031187,
+          "fp": 3,
+          "fn": 31,
+          "fp_cost": 15.0,
+          "fn_cost": 830.0859884836854,
+          "total_cost": 845.0859884836854
+        },
+        "A_retrain": {
+          "precision": 0.9850746268656716,
+          "recall": 0.8646288209606987,
+          "f1": 0.9209302325581395,
+          "fpr": 0.0031185031185031187,
+          "fp": 3,
+          "fn": 31,
+          "fp_cost": 15.0,
+          "fn_cost": 830.0859884836854,
+          "total_cost": 845.0859884836854
+        },
+        "A+B_frozen": {
+          "precision": 1.0,
+          "recall": 0.9868995633187773,
+          "f1": 0.9934065934065934,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 3,
+          "fp_cost": 0.0,
+          "fn_cost": 80.33090211132438,
+          "total_cost": 80.33090211132438
+        },
+        "A+B_retrain": {
+          "precision": 1.0,
+          "recall": 0.982532751091703,
+          "f1": 0.9911894273127753,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 4,
+          "fp_cost": 0.0,
+          "fn_cost": 107.10786948176585,
+          "total_cost": 107.10786948176585
+        },
+        "n_trainable_reviewed_labels": 0,
+        "adaptive_abuse_recall": {
+          "A_frozen": 0.7433628318584071,
+          "A_retrain": 0.7433628318584071,
+          "A+B_frozen": 0.9734513274336283,
+          "A+B_retrain": 0.9646017699115044
+        },
+        "hard_negative_fpr": {
+          "A_frozen": 0.0,
+          "A_retrain": 0.0,
+          "A+B_frozen": 0.0,
+          "A+B_retrain": 0.0
+        }
+      }
+    },
+    "round_3": {
+      "max_ab": {
+        "A_frozen": {
+          "precision": 0.989010989010989,
+          "recall": 0.782608695652174,
+          "f1": 0.8737864077669905,
+          "fpr": 0.002068252326783868,
+          "fp": 2,
+          "fn": 50,
+          "fp_cost": 10.0,
+          "fn_cost": 1338.848368522073,
+          "total_cost": 1348.848368522073
+        },
+        "A_retrain": {
+          "precision": 0.9781420765027322,
+          "recall": 0.7782608695652173,
+          "f1": 0.8668280871670702,
+          "fpr": 0.004136504653567736,
+          "fp": 4,
+          "fn": 51,
+          "fp_cost": 20.0,
+          "fn_cost": 1365.6253358925146,
+          "total_cost": 1385.6253358925146
+        },
+        "A+B_frozen": {
+          "precision": 1.0,
+          "recall": 0.9652173913043478,
+          "f1": 0.9823008849557522,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 8,
+          "fp_cost": 0.0,
+          "fn_cost": 214.2157389635317,
+          "total_cost": 214.2157389635317
+        },
+        "A+B_retrain": {
+          "precision": 1.0,
+          "recall": 0.9608695652173913,
+          "f1": 0.9800443458980045,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 9,
+          "fp_cost": 0.0,
+          "fn_cost": 240.99270633397316,
+          "total_cost": 240.99270633397316
+        },
+        "n_trainable_reviewed_labels": 12,
+        "adaptive_abuse_recall": {
+          "A_frozen": 0.5614035087719298,
+          "A_retrain": 0.5526315789473685,
+          "A+B_frozen": 0.9298245614035088,
+          "A+B_retrain": 0.9210526315789473
+        },
+        "hard_negative_fpr": {
+          "A_frozen": 0.0,
+          "A_retrain": 0.0,
+          "A+B_frozen": 0.0,
+          "A+B_retrain": 0.0
+        }
+      },
+      "disagreement": {
+        "A_frozen": {
+          "precision": 0.989010989010989,
+          "recall": 0.782608695652174,
+          "f1": 0.8737864077669905,
+          "fpr": 0.002068252326783868,
+          "fp": 2,
+          "fn": 50,
+          "fp_cost": 10.0,
+          "fn_cost": 1338.848368522073,
+          "total_cost": 1348.848368522073
+        },
+        "A_retrain": {
+          "precision": 0.9949238578680203,
+          "recall": 0.8521739130434782,
+          "f1": 0.9180327868852459,
+          "fpr": 0.001034126163391934,
+          "fp": 1,
+          "fn": 34,
+          "fp_cost": 5.0,
+          "fn_cost": 910.4168905950097,
+          "total_cost": 915.4168905950097
+        },
+        "A+B_frozen": {
+          "precision": 1.0,
+          "recall": 0.9652173913043478,
+          "f1": 0.9823008849557522,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 8,
+          "fp_cost": 0.0,
+          "fn_cost": 214.2157389635317,
+          "total_cost": 214.2157389635317
+        },
+        "A+B_retrain": {
+          "precision": 1.0,
+          "recall": 0.9478260869565217,
+          "f1": 0.9732142857142857,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 12,
+          "fp_cost": 0.0,
+          "fn_cost": 321.3236084452975,
+          "total_cost": 321.3236084452975
+        },
+        "n_trainable_reviewed_labels": 12,
+        "adaptive_abuse_recall": {
+          "A_frozen": 0.5614035087719298,
+          "A_retrain": 0.7017543859649122,
+          "A+B_frozen": 0.9298245614035088,
+          "A+B_retrain": 0.8947368421052632
+        },
+        "hard_negative_fpr": {
+          "A_frozen": 0.0,
+          "A_retrain": 0.0,
+          "A+B_frozen": 0.0,
+          "A+B_retrain": 0.0
+        }
+      },
+      "risk_x_disagreement": {
+        "A_frozen": {
+          "precision": 0.989010989010989,
+          "recall": 0.782608695652174,
+          "f1": 0.8737864077669905,
+          "fpr": 0.002068252326783868,
+          "fp": 2,
+          "fn": 50,
+          "fp_cost": 10.0,
+          "fn_cost": 1338.848368522073,
+          "total_cost": 1348.848368522073
+        },
+        "A_retrain": {
+          "precision": 0.9948979591836735,
+          "recall": 0.8478260869565217,
+          "f1": 0.9154929577464789,
+          "fpr": 0.001034126163391934,
+          "fp": 1,
+          "fn": 35,
+          "fp_cost": 5.0,
+          "fn_cost": 937.1938579654511,
+          "total_cost": 942.1938579654511
+        },
+        "A+B_frozen": {
+          "precision": 1.0,
+          "recall": 0.9652173913043478,
+          "f1": 0.9823008849557522,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 8,
+          "fp_cost": 0.0,
+          "fn_cost": 214.2157389635317,
+          "total_cost": 214.2157389635317
+        },
+        "A+B_retrain": {
+          "precision": 1.0,
+          "recall": 0.9565217391304348,
+          "f1": 0.9777777777777777,
+          "fpr": 0.0,
+          "fp": 0,
+          "fn": 10,
+          "fp_cost": 0.0,
+          "fn_cost": 267.76967370441463,
+          "total_cost": 267.76967370441463
+        },
+        "n_trainable_reviewed_labels": 10,
+        "adaptive_abuse_recall": {
+          "A_frozen": 0.5614035087719298,
+          "A_retrain": 0.6929824561403509,
+          "A+B_frozen": 0.9298245614035088,
+          "A+B_retrain": 0.9122807017543859
+        },
+        "hard_negative_fpr": {
+          "A_frozen": 0.0,
+          "A_retrain": 0.0,
+          "A+B_frozen": 0.0,
+          "A+B_retrain": 0.0
+        }
+      }
+    },
+    "round_4": {
+      "max_ab": {
+        "A_frozen": {
+          "precision": 0.9418604651162791,
+          "recall": 0.7043478260869566,
+          "f1": 0.8059701492537314,
+          "fpr": 0.010330578512396695,
+          "fp": 10,
+          "fn": 68,
+          "fp_cost": 50.0,
+          "fn_cost": 1820.8337811900194,
+          "total_cost": 1870.8337811900194
+        },
+        "A_retrain": {
+          "precision": 0.9418604651162791,
+          "recall": 0.7043478260869566,
+          "f1": 0.8059701492537314,
+          "fpr": 0.010330578512396695,
+          "fp": 10,
+          "fn": 68,
+          "fp_cost": 50.0,
+          "fn_cost": 1820.8337811900194,
+          "total_cost": 1870.8337811900194
+        },
+        "A+B_frozen": {
+          "precision": 0.9565217391304348,
+          "recall": 0.9565217391304348,
+          "f1": 0.9565217391304348,
+          "fpr": 0.010330578512396695,
+          "fp": 10,
+          "fn": 10,
+          "fp_cost": 50.0,
+          "fn_cost": 267.76967370441463,
+          "total_cost": 317.76967370441463
+        },
+        "A+B_retrain": {
+          "precision": 0.9733333333333334,
+          "recall": 0.9521739130434783,
+          "f1": 0.9626373626373628,
+          "fpr": 0.006198347107438017,
+          "fp": 6,
+          "fn": 11,
+          "fp_cost": 30.0,
+          "fn_cost": 294.5466410748561,
+          "total_cost": 324.5466410748561
+        },
+        "n_trainable_reviewed_labels": 42,
+        "adaptive_abuse_recall": {
+          "A_frozen": 0.40350877192982454,
+          "A_retrain": 0.40350877192982454,
+          "A+B_frozen": 0.9122807017543859,
+          "A+B_retrain": 0.9035087719298246
+        },
+        "hard_negative_fpr": {
+          "A_frozen": 0.008620689655172414,
+          "A_retrain": 0.008620689655172414,
+          "A+B_frozen": 0.017241379310344827,
+          "A+B_retrain": 0.017241379310344827
+        }
+      },
+      "disagreement": {
+        "A_frozen": {
+          "precision": 0.9418604651162791,
+          "recall": 0.7043478260869566,
+          "f1": 0.8059701492537314,
+          "fpr": 0.010330578512396695,
+          "fp": 10,
+          "fn": 68,
+          "fp_cost": 50.0,
+          "fn_cost": 1820.8337811900194,
+          "total_cost": 1870.8337811900194
+        },
+        "A_retrain": {
+          "precision": 0.9302325581395349,
+          "recall": 0.8695652173913043,
+          "f1": 0.898876404494382,
+          "fpr": 0.015495867768595042,
+          "fp": 15,
+          "fn": 30,
+          "fp_cost": 75.0,
+          "fn_cost": 803.3090211132438,
+          "total_cost": 878.3090211132438
+        },
+        "A+B_frozen": {
+          "precision": 0.9565217391304348,
+          "recall": 0.9565217391304348,
+          "f1": 0.9565217391304348,
+          "fpr": 0.010330578512396695,
+          "fp": 10,
+          "fn": 10,
+          "fp_cost": 50.0,
+          "fn_cost": 267.76967370441463,
+          "total_cost": 317.76967370441463
+        },
+        "A+B_retrain": {
+          "precision": 0.9530516431924883,
+          "recall": 0.8826086956521739,
+          "f1": 0.9164785553047404,
+          "fpr": 0.010330578512396695,
+          "fp": 10,
+          "fn": 27,
+          "fp_cost": 50.0,
+          "fn_cost": 722.9781190019195,
+          "total_cost": 772.9781190019195
+        },
+        "n_trainable_reviewed_labels": 44,
+        "adaptive_abuse_recall": {
+          "A_frozen": 0.40350877192982454,
+          "A_retrain": 0.7368421052631579,
+          "A+B_frozen": 0.9122807017543859,
+          "A+B_retrain": 0.7631578947368421
+        },
+        "hard_negative_fpr": {
+          "A_frozen": 0.008620689655172414,
+          "A_retrain": 0.008620689655172414,
+          "A+B_frozen": 0.017241379310344827,
+          "A+B_retrain": 0.008620689655172414
+        }
+      },
+      "risk_x_disagreement": {
+        "A_frozen": {
+          "precision": 0.9418604651162791,
+          "recall": 0.7043478260869566,
+          "f1": 0.8059701492537314,
+          "fpr": 0.010330578512396695,
+          "fp": 10,
+          "fn": 68,
+          "fp_cost": 50.0,
+          "fn_cost": 1820.8337811900194,
+          "total_cost": 1870.8337811900194
+        },
+        "A_retrain": {
+          "precision": 0.9463414634146341,
+          "recall": 0.8434782608695652,
+          "f1": 0.8919540229885057,
+          "fpr": 0.011363636363636364,
+          "fp": 11,
+          "fn": 36,
+          "fp_cost": 55.0,
+          "fn_cost": 963.9708253358926,
+          "total_cost": 1018.9708253358926
+        },
+        "A+B_frozen": {
+          "precision": 0.9565217391304348,
+          "recall": 0.9565217391304348,
+          "f1": 0.9565217391304348,
+          "fpr": 0.010330578512396695,
+          "fp": 10,
+          "fn": 10,
+          "fp_cost": 50.0,
+          "fn_cost": 267.76967370441463,
+          "total_cost": 317.76967370441463
+        },
+        "A+B_retrain": {
+          "precision": 0.9565217391304348,
+          "recall": 0.8608695652173913,
+          "f1": 0.9061784897025171,
+          "fpr": 0.009297520661157025,
+          "fp": 9,
+          "fn": 32,
+          "fp_cost": 45.0,
+          "fn_cost": 856.8629558541268,
+          "total_cost": 901.8629558541268
+        },
+        "n_trainable_reviewed_labels": 38,
+        "adaptive_abuse_recall": {
+          "A_frozen": 0.40350877192982454,
+          "A_retrain": 0.6842105263157895,
+          "A+B_frozen": 0.9122807017543859,
+          "A+B_retrain": 0.7192982456140351
+        },
+        "hard_negative_fpr": {
+          "A_frozen": 0.008620689655172414,
+          "A_retrain": 0.008620689655172414,
+          "A+B_frozen": 0.017241379310344827,
+          "A+B_retrain": 0.008620689655172414
+        }
+      }
+    }
+  }
+}

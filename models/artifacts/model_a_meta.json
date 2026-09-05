@@ -1,0 +1,25 @@
+{
+  "feature_columns": [
+    "n_orders",
+    "total_order_value",
+    "avg_order_value",
+    "order_value_std",
+    "n_distinct_merchants",
+    "n_distinct_categories",
+    "n_returns",
+    "avg_days_to_return",
+    "pct_fast_returns",
+    "pct_reason_changed_mind",
+    "return_rate",
+    "returns_per_week",
+    "account_age_days",
+    "days_since_last_order"
+  ],
+  "train_as_of": 89,
+  "val_as_of": 104,
+  "test_as_of": 119,
+  "threshold_cost_optimal": 0.2921212121212121,
+  "cost_fp": 5.0,
+  "cost_fn": 26.77696737044146,
+  "seed": 42
+}

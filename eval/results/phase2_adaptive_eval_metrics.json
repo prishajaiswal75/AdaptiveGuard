@@ -1,0 +1,262 @@
+{
+  "frozen_artifacts": {
+    "model_path": "models/artifacts/model_a.json",
+    "threshold_cost_optimal": 0.2921212121212121,
+    "cost_fp": 5.0,
+    "cost_fn": 26.77696737044146,
+    "feature_columns": [
+      "n_orders",
+      "total_order_value",
+      "avg_order_value",
+      "order_value_std",
+      "n_distinct_merchants",
+      "n_distinct_categories",
+      "n_returns",
+      "avg_days_to_return",
+      "pct_fast_returns",
+      "pct_reason_changed_mind",
+      "return_rate",
+      "returns_per_week",
+      "account_age_days",
+      "days_since_last_order"
+    ]
+  },
+  "sanity_check_round1_matches_phase1": true,
+  "phase1_round1_baseline": {
+    "threshold": 0.2921212121212121,
+    "n": 1146,
+    "tp": 207,
+    "fp": 6,
+    "fn": 17,
+    "tn": 916,
+    "precision": 0.971830985915493,
+    "recall": 0.9241071428571429,
+    "f1": 0.9473684210526317,
+    "fpr": 0.006507592190889371,
+    "fp_cost": 30.0,
+    "fn_cost": 455.20844529750485,
+    "total_cost": 485.20844529750485
+  },
+  "rounds": {
+    "round_1_resc": {
+      "label": "round_1_resc",
+      "as_of_day": 119,
+      "n": 1146,
+      "n_positive": 224,
+      "overall": {
+        "threshold": 0.2921212121212121,
+        "n": 1146,
+        "tp": 207,
+        "fp": 6,
+        "fn": 17,
+        "tn": 916,
+        "precision": 0.971830985915493,
+        "recall": 0.9241071428571429,
+        "f1": 0.9473684210526317,
+        "fpr": 0.006507592190889371,
+        "fp_cost": 30.0,
+        "fn_cost": 455.20844529750485,
+        "total_cost": 485.20844529750485
+      },
+      "by_population": {
+        "normal": {
+          "n": 809,
+          "tp": 0,
+          "fp": 6,
+          "fn": 0,
+          "tn": 803,
+          "fpr": 0.007416563658838072
+        },
+        "hard_negative": {
+          "n": 113,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 113,
+          "fpr": 0.0
+        },
+        "naive_abuse": {
+          "n": 113,
+          "tp": 109,
+          "fp": 0,
+          "fn": 4,
+          "tn": 0,
+          "recall": 0.9646017699115044
+        },
+        "adaptive_abuse": {
+          "n": 111,
+          "tp": 98,
+          "fp": 0,
+          "fn": 13,
+          "tn": 0,
+          "recall": 0.8828828828828829
+        }
+      }
+    },
+    "round_2": {
+      "label": "round_2",
+      "as_of_day": 149,
+      "n": 1191,
+      "n_positive": 229,
+      "overall": {
+        "threshold": 0.2921212121212121,
+        "n": 1191,
+        "tp": 198,
+        "fp": 3,
+        "fn": 31,
+        "tn": 959,
+        "precision": 0.9850746268656716,
+        "recall": 0.8646288209606987,
+        "f1": 0.9209302325581395,
+        "fpr": 0.0031185031185031187,
+        "fp_cost": 15.0,
+        "fn_cost": 830.0859884836854,
+        "total_cost": 845.0859884836854
+      },
+      "by_population": {
+        "normal": {
+          "n": 846,
+          "tp": 0,
+          "fp": 3,
+          "fn": 0,
+          "tn": 843,
+          "fpr": 0.0035460992907801418
+        },
+        "hard_negative": {
+          "n": 116,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 116,
+          "fpr": 0.0
+        },
+        "naive_abuse": {
+          "n": 116,
+          "tp": 114,
+          "fp": 0,
+          "fn": 2,
+          "tn": 0,
+          "recall": 0.9827586206896551
+        },
+        "adaptive_abuse": {
+          "n": 113,
+          "tp": 84,
+          "fp": 0,
+          "fn": 29,
+          "tn": 0,
+          "recall": 0.7433628318584071
+        }
+      }
+    },
+    "round_3": {
+      "label": "round_3",
+      "as_of_day": 179,
+      "n": 1197,
+      "n_positive": 230,
+      "overall": {
+        "threshold": 0.2921212121212121,
+        "n": 1197,
+        "tp": 180,
+        "fp": 2,
+        "fn": 50,
+        "tn": 965,
+        "precision": 0.989010989010989,
+        "recall": 0.782608695652174,
+        "f1": 0.8737864077669905,
+        "fpr": 0.002068252326783868,
+        "fp_cost": 10.0,
+        "fn_cost": 1338.848368522073,
+        "total_cost": 1348.848368522073
+      },
+      "by_population": {
+        "normal": {
+          "n": 851,
+          "tp": 0,
+          "fp": 2,
+          "fn": 0,
+          "tn": 849,
+          "fpr": 0.0023501762632197414
+        },
+        "hard_negative": {
+          "n": 116,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 116,
+          "fpr": 0.0
+        },
+        "naive_abuse": {
+          "n": 116,
+          "tp": 116,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "recall": 1.0
+        },
+        "adaptive_abuse": {
+          "n": 114,
+          "tp": 64,
+          "fp": 0,
+          "fn": 50,
+          "tn": 0,
+          "recall": 0.5614035087719298
+        }
+      }
+    },
+    "round_4": {
+      "label": "round_4",
+      "as_of_day": 209,
+      "n": 1198,
+      "n_positive": 230,
+      "overall": {
+        "threshold": 0.2921212121212121,
+        "n": 1198,
+        "tp": 162,
+        "fp": 10,
+        "fn": 68,
+        "tn": 958,
+        "precision": 0.9418604651162791,
+        "recall": 0.7043478260869566,
+        "f1": 0.8059701492537314,
+        "fpr": 0.010330578512396695,
+        "fp_cost": 50.0,
+        "fn_cost": 1820.8337811900194,
+        "total_cost": 1870.8337811900194
+      },
+      "by_population": {
+        "normal": {
+          "n": 852,
+          "tp": 0,
+          "fp": 9,
+          "fn": 0,
+          "tn": 843,
+          "fpr": 0.01056338028169014
+        },
+        "hard_negative": {
+          "n": 116,
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "tn": 115,
+          "fpr": 0.008620689655172414
+        },
+        "naive_abuse": {
+          "n": 116,
+          "tp": 116,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "recall": 1.0
+        },
+        "adaptive_abuse": {
+          "n": 114,
+          "tp": 46,
+          "fp": 0,
+          "fn": 68,
+          "tn": 0,
+          "recall": 0.40350877192982454
+        }
+      }
+    }
+  }
+}

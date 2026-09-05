@@ -1,0 +1,305 @@
+{
+  "frozen_artifacts": {
+    "model_path": "models/artifacts/model_b.json",
+    "threshold_cost_optimal": 0.5643434343434344,
+    "cost_fp": 5.0,
+    "cost_fn": 26.77696737044146,
+    "feature_columns": [
+      "n_orders",
+      "total_order_value",
+      "avg_order_value",
+      "order_value_std",
+      "n_distinct_merchants",
+      "n_distinct_categories",
+      "n_returns",
+      "avg_days_to_return",
+      "pct_fast_returns",
+      "pct_reason_changed_mind",
+      "return_rate",
+      "returns_per_week",
+      "account_age_days",
+      "days_since_last_order",
+      "device_sharing_count",
+      "address_sharing_count",
+      "payment_fp_sharing_count",
+      "identifier_cluster_size",
+      "cluster_return_rate",
+      "suspicious_neighbor_ratio",
+      "merchant_relative_deviation",
+      "category_relative_deviation",
+      "recent_burst_score"
+    ]
+  },
+  "rounds": {
+    "round_1": {
+      "label": "round_1",
+      "as_of_day": 119,
+      "n": 1146,
+      "n_positive": 224,
+      "overall": {
+        "threshold": 0.5643434343434344,
+        "n": 1146,
+        "tp": 221,
+        "fp": 1,
+        "fn": 3,
+        "tn": 921,
+        "precision": 0.9954954954954955,
+        "recall": 0.9866071428571429,
+        "f1": 0.9910313901345291,
+        "fpr": 0.0010845986984815619,
+        "fp_cost": 5.0,
+        "fn_cost": 80.33090211132438,
+        "total_cost": 85.33090211132438
+      },
+      "by_population": {
+        "normal": {
+          "n": 809,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 809,
+          "fpr": 0.0
+        },
+        "hard_negative": {
+          "n": 113,
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "tn": 112,
+          "fpr": 0.008849557522123894
+        },
+        "naive_abuse": {
+          "n": 113,
+          "tp": 112,
+          "fp": 0,
+          "fn": 1,
+          "tn": 0,
+          "recall": 0.9911504424778761
+        },
+        "adaptive_abuse": {
+          "n": 111,
+          "tp": 109,
+          "fp": 0,
+          "fn": 2,
+          "tn": 0,
+          "recall": 0.9819819819819819
+        }
+      },
+      "leakage_check": {
+        "n_clusters_spanning_splits": 0,
+        "n_clusters_total": 4817
+      }
+    },
+    "round_2": {
+      "label": "round_2",
+      "as_of_day": 149,
+      "n": 1191,
+      "n_positive": 229,
+      "overall": {
+        "threshold": 0.5643434343434344,
+        "n": 1191,
+        "tp": 226,
+        "fp": 0,
+        "fn": 3,
+        "tn": 962,
+        "precision": 1.0,
+        "recall": 0.9868995633187773,
+        "f1": 0.9934065934065934,
+        "fpr": 0.0,
+        "fp_cost": 0.0,
+        "fn_cost": 80.33090211132438,
+        "total_cost": 80.33090211132438
+      },
+      "by_population": {
+        "normal": {
+          "n": 846,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 846,
+          "fpr": 0.0
+        },
+        "hard_negative": {
+          "n": 116,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 116,
+          "fpr": 0.0
+        },
+        "naive_abuse": {
+          "n": 116,
+          "tp": 116,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "recall": 1.0
+        },
+        "adaptive_abuse": {
+          "n": 113,
+          "tp": 110,
+          "fp": 0,
+          "fn": 3,
+          "tn": 0,
+          "recall": 0.9734513274336283
+        }
+      },
+      "leakage_check": {
+        "n_clusters_spanning_splits": 0,
+        "n_clusters_total": 5006
+      }
+    },
+    "round_3": {
+      "label": "round_3",
+      "as_of_day": 179,
+      "n": 1197,
+      "n_positive": 230,
+      "overall": {
+        "threshold": 0.5643434343434344,
+        "n": 1197,
+        "tp": 222,
+        "fp": 0,
+        "fn": 8,
+        "tn": 967,
+        "precision": 1.0,
+        "recall": 0.9652173913043478,
+        "f1": 0.9823008849557522,
+        "fpr": 0.0,
+        "fp_cost": 0.0,
+        "fn_cost": 214.2157389635317,
+        "total_cost": 214.2157389635317
+      },
+      "by_population": {
+        "normal": {
+          "n": 851,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 851,
+          "fpr": 0.0
+        },
+        "hard_negative": {
+          "n": 116,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 116,
+          "fpr": 0.0
+        },
+        "naive_abuse": {
+          "n": 116,
+          "tp": 116,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "recall": 1.0
+        },
+        "adaptive_abuse": {
+          "n": 114,
+          "tp": 106,
+          "fp": 0,
+          "fn": 8,
+          "tn": 0,
+          "recall": 0.9298245614035088
+        }
+      },
+      "leakage_check": {
+        "n_clusters_spanning_splits": 0,
+        "n_clusters_total": 5035
+      }
+    },
+    "round_4": {
+      "label": "round_4",
+      "as_of_day": 209,
+      "n": 1198,
+      "n_positive": 230,
+      "overall": {
+        "threshold": 0.5643434343434344,
+        "n": 1198,
+        "tp": 220,
+        "fp": 10,
+        "fn": 10,
+        "tn": 958,
+        "precision": 0.9565217391304348,
+        "recall": 0.9565217391304348,
+        "f1": 0.9565217391304348,
+        "fpr": 0.010330578512396695,
+        "fp_cost": 50.0,
+        "fn_cost": 267.76967370441463,
+        "total_cost": 317.76967370441463
+      },
+      "by_population": {
+        "normal": {
+          "n": 852,
+          "tp": 0,
+          "fp": 8,
+          "fn": 0,
+          "tn": 844,
+          "fpr": 0.009389671361502348
+        },
+        "hard_negative": {
+          "n": 116,
+          "tp": 0,
+          "fp": 2,
+          "fn": 0,
+          "tn": 114,
+          "fpr": 0.017241379310344827
+        },
+        "naive_abuse": {
+          "n": 116,
+          "tp": 116,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "recall": 1.0
+        },
+        "adaptive_abuse": {
+          "n": 114,
+          "tp": 104,
+          "fp": 0,
+          "fn": 10,
+          "tn": 0,
+          "recall": 0.9122807017543859
+        }
+      },
+      "leakage_check": {
+        "n_clusters_spanning_splits": 0,
+        "n_clusters_total": 5039
+      }
+    }
+  },
+  "comparison_vs_model_a": {
+    "round_1": {
+      "adaptive_abuse_recall_A": 0.8828828828828829,
+      "adaptive_abuse_recall_B": 0.9819819819819819,
+      "hard_negative_fpr_A": 0.0,
+      "hard_negative_fpr_B": 0.008849557522123894,
+      "total_cost_A": 485.20844529750485,
+      "total_cost_B": 85.33090211132438
+    },
+    "round_2": {
+      "adaptive_abuse_recall_A": 0.7433628318584071,
+      "adaptive_abuse_recall_B": 0.9734513274336283,
+      "hard_negative_fpr_A": 0.0,
+      "hard_negative_fpr_B": 0.0,
+      "total_cost_A": 845.0859884836854,
+      "total_cost_B": 80.33090211132438
+    },
+    "round_3": {
+      "adaptive_abuse_recall_A": 0.5614035087719298,
+      "adaptive_abuse_recall_B": 0.9298245614035088,
+      "hard_negative_fpr_A": 0.0,
+      "hard_negative_fpr_B": 0.0,
+      "total_cost_A": 1348.848368522073,
+      "total_cost_B": 214.2157389635317
+    },
+    "round_4": {
+      "adaptive_abuse_recall_A": 0.40350877192982454,
+      "adaptive_abuse_recall_B": 0.9122807017543859,
+      "hard_negative_fpr_A": 0.008620689655172414,
+      "hard_negative_fpr_B": 0.017241379310344827,
+      "total_cost_A": 1870.8337811900194,
+      "total_cost_B": 317.76967370441463
+    }
+  }
+}

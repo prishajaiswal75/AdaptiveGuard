@@ -1,0 +1,72 @@
+seed: 42
+
+simulation:
+  total_days: 210
+  rounds:
+    0: {name: baseline,                start: 0,   end: 89}
+    1: {name: deployment,              start: 90,  end: 119}
+    2: {name: adaptation_begins,       start: 120, end: 149}
+    3: {name: model_a_degrades,        start: 150, end: 179}
+    4: {name: stress_test_relational,  start: 180, end: 209}
+
+merchants:
+  count: 30
+  history_depth_days_range: [5, 400]     # days merchant existed before day 0; short = cold-start hard negative
+  products_per_merchant: [5, 20]
+  categories: [fashion, electronics, home, beauty, sports, grocery, books, toys]
+
+customers:
+  total: 6000
+  population_mix:
+    normal: 0.70
+    hard_negative: 0.10
+    naive_abuse: 0.10
+    adaptive_abuse: 0.10
+  hard_negative_subtype_mix:
+    high_return_fashion: 0.25
+    shared_household: 0.25
+    promo_spike: 0.20
+    popular_product_volume: 0.15
+    new_merchant_thin_history: 0.15
+  signup_day_range: [0, 100]
+  orders_per_customer_mean:
+    normal: 8
+    hard_negative: 12
+    naive_abuse: 10
+    adaptive_abuse: 10
+
+rings:
+  naive_abuse_ring_size_range: [3, 8]
+  adaptive_abuse_ring_size_range: [3, 8]
+  shared_household_size_range: [2, 4]
+  # probability a ring member actually shares each identifier type (partial sharing = more realistic)
+  share_prob: {device: 0.7, address: 0.5, payment_fp: 0.6}
+  household_share_prob: {device: 0.4, address: 1.0, payment_fp: 0.2}
+
+behavior:
+  # return_rate = P(an order is returned), by population/subtype/round
+  return_rate:
+    normal: [0.03, 0.12]
+    hard_negative_high_return_fashion: [0.35, 0.55]
+    hard_negative_other: [0.05, 0.15]
+    hard_negative_promo_spike_boost: [0.30, 0.45]   # applied only during promo window, on top of base
+    naive_abuse: [0.45, 0.70]
+    adaptive_abuse_pre_round2: [0.45, 0.70]          # rounds 0-1: looks like naive_abuse
+    adaptive_abuse_post_round2: [0.12, 0.22]         # rounds 2+: mimics normal behaviorally
+  promo_window_days: [130, 140]
+  fast_return_days_abuse: [0, 3]      # abusive returns happen quickly after delivery
+  fast_return_days_normal: [3, 21]
+  round4_identity_churn_prob: 0.35    # fraction of adaptive-ring orders in round 4 that drop the shared identifier
+
+split:
+  test_fraction: 0.2
+  val_fraction: 0.1
+
+costs:
+  # OUR DESIGN / assumption, not an empirical result: a false positive costs
+  # a fixed review/friction amount; a false negative costs the unrecovered
+  # refund. cost_fn is derived from the training split's own abusive-return
+  # refund amounts when possible, falling back to cost_fn_fallback otherwise.
+  cost_fp: 5.0
+  cost_fn_fallback: 50.0
+  derive_cost_fn_from_train_refunds: true
